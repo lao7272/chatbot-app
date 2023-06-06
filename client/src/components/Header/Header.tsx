@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <div className='chat-header'>Header</div>
+        <div className='chat-header'></div>
     )
 }

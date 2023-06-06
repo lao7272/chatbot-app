@@ -1,0 +1,42 @@
+.chat-footer {
+    height: 10%;
+    background: #ffffff;
+}
+
+.chat-footer>form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-footer input {
+    width: 75%;
+    height: 55%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.chat-footer button {
+    background: none;
+    border: none;
+}
+
+.chat-footer button p {
+    font-size: 28px;
+    background: -webkit-linear-gradient(#60fffa, #19d5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.chat-footer button p:hover {
+    background: -webkit-linear-gradient(#60cdff, #199fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: all .5s;
+}

@@ -1,20 +1,30 @@
-import React, {FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
+import "./Footer.css";
+import {FooterProps, Message} from "../../constants"
 
-export default function Form() {
-    const [message, setMessage] = useState<FormDataEntryValue | null>(null);
+export default function Footer({handleSetMessage}: FooterProps) {
+    const [message, setMessage] = useState<string>('');
+    function handleChange (e: ChangeEvent<HTMLInputElement>) {
+        const text = e.currentTarget.value;
+        setMessage(text);
+    }
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const formData:FormData = new FormData(e.currentTarget);
-        const text: FormDataEntryValue | null = formData.get("text");
-        if(text === '') return;
-        setMessage(text);
-        console.log(text)
+        if(message === "") return;
+        const newMessage: Message = {
+            sender: "user",
+            content: message,
+            timeStamp: new Date()
+        }
+        handleSetMessage(newMessage);
+        setMessage("");
         e.currentTarget.reset();
     }
     return (
         <div className='chat-footer'>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <input type="text" name='text' placeholder='Type a message'/><button type='submit'>&#10148;</button>
+                <input onChange={(e) => handleChange(e)} type="text" name='text' placeholder='Type a message'/>
+                <button type='submit'><p>&#10148;</p></button>
             </form>
         </div>
     )
