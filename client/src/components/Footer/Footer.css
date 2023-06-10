@@ -1,42 +1,52 @@
 .chat-footer {
-    height: 10%;
-    background: #ffffff;
+    min-height: 10%;
+    max-height: 50%;
+    background: #efefef;
 }
 
 .chat-footer>form {
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
 
-.chat-footer input {
-    width: 75%;
-    height: 55%;
+.chat-footer textarea {
+    width: 85%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     outline: none;
-
+    resize: none;
+    overflow: hidden;
 }
 
 .chat-footer button {
     background: none;
     border: none;
+    width: 15%;
 }
 
 .chat-footer button p {
     font-size: 28px;
     background: -webkit-linear-gradient(#60fffa, #19d5ff);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .chat-footer button p:hover {
     background: -webkit-linear-gradient(#60cdff, #199fff);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
     transition: all .5s;
+}
+.chat-footer .chat-typing {
+    width: 15%;
+    height: 50px;
+    background: url("../../../public/assets/gif/typing.gif");
+    background-repeat: no-repeat;
+    background-size:contain;
+    
 }

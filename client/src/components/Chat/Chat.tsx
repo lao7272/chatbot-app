@@ -1,23 +1,15 @@
-import React, { useState } from 'react'
 import Footer from '../Footer/Footer'
 import BodyMessage from '../BodyMessage/BodyMessage'
 import "./Chat.css"
 import Header from '../Header/Header'
-import { Message } from '../../constants'
+import { ChatProps } from '../../constants'
 
-export default function Chat() {
-    const [messages, setMessages] = useState<Message[]>([]);
-    function handleSetMessage(newMessage: Message) {
-        setMessages((currMessages: Message[]) => {
-            const updatedMessages = [...currMessages, newMessage];
-            return updatedMessages;
-        });
-    }
+export default function Chat({handleSetMessage, messages, handleSetResponse, response}: ChatProps) {
     return (
         <div className='chat'>
             <Header />
             <BodyMessage messages={messages}/>
-            <Footer handleSetMessage={handleSetMessage} />
+            <Footer handleSetMessage={handleSetMessage} handleSetResponse={handleSetResponse} response={response}/>
         </div>
     )
 }

@@ -1,10 +1,19 @@
 interface Message {
-    sender: string,
+    role: string,
     content: string,
-    timeStamp: Date
+    timestamp: Date | string
+}
+
+interface ChatProps {
+    messages: Message[];
+    handleSetMessage: (newMessage: Message ) => void;
+    handleSetResponse:(value: boolean) => void;
+    response: boolean;
 }
 interface FooterProps {
     handleSetMessage: (newMessage: Message ) => void;
+    handleSetResponse:(value: boolean) => void;
+    response: boolean;
 }
 interface BodyMessageProps {
     messages: Message[];
@@ -12,5 +21,6 @@ interface BodyMessageProps {
 export {
     type Message,
     type FooterProps,
-    type BodyMessageProps
+    type BodyMessageProps,
+    type ChatProps
 }

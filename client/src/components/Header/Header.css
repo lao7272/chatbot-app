@@ -1,0 +1,22 @@
+.chat-header {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px;
+    grid-row: 1fr;
+    background-image: linear-gradient(
+        10deg,
+        hsl(191deg 100% 56%) 0%,
+        hsl(194deg 100% 50%) 6%,
+        hsl(201deg 100% 50%) 20%,
+        hsl(239deg 100% 74%) 55%,
+        hsl(292deg 100% 50%) 100%
+    );
+}
+
+.chat-header>img {
+    height: 60%;
+}

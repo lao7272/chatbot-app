@@ -1,30 +1,47 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, KeyboardEvent, useState} from 'react';
 import "./Footer.css";
 import {FooterProps, Message} from "../../constants"
 
-export default function Footer({handleSetMessage}: FooterProps) {
+export default function Footer({handleSetMessage, handleSetResponse, response}: FooterProps) {
     const [message, setMessage] = useState<string>('');
-    function handleChange (e: ChangeEvent<HTMLInputElement>) {
+    function handleChange (e: ChangeEvent<HTMLTextAreaElement>) {
         const text = e.currentTarget.value;
         setMessage(text);
     }
-    function handleSubmit(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        if(message === "") return;
+    function handleSubmit(e?: FormEvent<HTMLFormElement>) {
+        if(message.trim() === "") return;
         const newMessage: Message = {
-            sender: "user",
+            role: "user",
             content: message,
-            timeStamp: new Date()
+            timestamp: new Date()
         }
         handleSetMessage(newMessage);
+        handleSetResponse(true);
         setMessage("");
+        if(!e) return;
+        e.preventDefault();
         e.currentTarget.reset();
+    }
+    function preventEnter (e: KeyboardEvent<HTMLTextAreaElement>) {
+        if(e.key === "Enter" && e.shiftKey) return;
+        if(e.key === "Enter" && !response) {
+            e.preventDefault()
+            e.currentTarget.value = "";
+            handleSubmit();
+        } else if(e.key === "Enter") {
+            e.preventDefault();
+        }
+        
     }
     return (
         <div className='chat-footer'>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <input onChange={(e) => handleChange(e)} type="text" name='text' placeholder='Type a message'/>
-                <button type='submit'><p>&#10148;</p></button>
+                <textarea onChange={(e) => handleChange(e)} onKeyDown={e => preventEnter(e)} placeholder='Type a message'></textarea>
+                {!response ? 
+                <button type='submit'><p>&#10148;</p></button> : 
+                <div className="chat-typing"></div>
+                }
+                
             </form>
         </div>
     )
