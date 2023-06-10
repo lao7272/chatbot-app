@@ -1,11 +1,9 @@
 .chat-footer {
-    min-height: 10%;
-    max-height: 50%;
     background: #efefef;
+    padding: 10px;
 }
 
-.chat-footer>form {
-    width: 100%;
+.chat-footer > form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,11 +12,14 @@
 .chat-footer textarea {
     width: 85%;
     padding: 10px;
-    border: none;
     border-radius: 5px;
+    border: none;
     outline: none;
     resize: none;
-    overflow: hidden;
+    max-height: 250px;
+}
+textarea::-webkit-scrollbar{
+    width: 0;
 }
 
 .chat-footer button {
