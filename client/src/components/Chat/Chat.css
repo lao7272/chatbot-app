@@ -1,11 +1,11 @@
 .chat {
     width: 70%;
     background: #ccc;
-    height: 85%;
-    border-radius: 10px;
+    height: 90%;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0px 0px 8px 1px #4c4c4c;
+    box-shadow: 0px 0px 8px 0px #040404;
 }
 

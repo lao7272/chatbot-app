@@ -6,21 +6,21 @@
     flex-direction: column;
     padding: 15px;
     gap: 10px;
-    background-color:#c8f5ff;
+    background-color:#dfe7ff;
 }
 .msg {
     width: fit-content;
     max-width: 85%;
-    padding: 4px 8px;
-    border-radius: 8px;
+    padding: 5px 12px;
+    border-radius: 15px;
     word-wrap: break-word;
 }
 .user-msg {
-    background-color: #277af7;
+    background-color: #6786FA;
     align-self: flex-end;
     border-bottom-right-radius: 0;
 }
 .assistant-msg{
-    background-color: aqua;
-    border-bottom-left-radius: 0;
+    background-color: #fff;
+    border-top-left-radius: 0;
 }

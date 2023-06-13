@@ -1,18 +1,19 @@
 .chat-footer {
-    background: #efefef;
-    padding: 10px;
+    background: #dfe7ff;
+    padding: 10px 15px;
 }
 
 .chat-footer > form {
     display: flex;
     justify-content: center;
+    gap: 10px;
     align-items: center;
 }
 
 .chat-footer textarea {
-    width: 85%;
-    padding: 10px;
-    border-radius: 5px;
+    width: 90%;
+    padding: 15px;
+    border-radius: 15px;
     border: none;
     outline: none;
     resize: none;
@@ -21,6 +22,15 @@
 textarea::-webkit-scrollbar{
     width: 0;
 }
+.srollbar-active::-webkit-scrollbar{
+    width: 3.5px;
+}
+.srollbar-active::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+    height: 30px;
+}
+
 
 .chat-footer button {
     background: none;
@@ -30,24 +40,45 @@ textarea::-webkit-scrollbar{
 
 .chat-footer button p {
     font-size: 28px;
-    background: -webkit-linear-gradient(#60fffa, #19d5ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #4b84ff;
+    transition: all .3s;
 }
 .chat-footer button p:hover {
-    background: -webkit-linear-gradient(#60cdff, #199fff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     cursor: pointer;
-    transition: all .5s;
+    color: #1860fb;
 }
-.chat-footer .chat-typing {
+.chat-footer .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 15%;
-    height: 50px;
-    background: url("../../../public/assets/gif/typing.gif");
-    background-repeat: no-repeat;
-    background-size:contain;
+}
+
+.chat-footer .loading {
+    display: inline-flex;
+}
+.chat-footer .loading span {
+    margin: 0 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 99%;
+    background: #4b84ff;
+    animation: dots 1.5s ease-in-out infinite;
+}
+.chat-footer .loading span:nth-child(2) {
+    animation-delay: 300ms;
+}
+.chat-footer .loading span:nth-child(3) {
+    animation-delay: 400ms;
+}
+
+@keyframes dots {
+    0%, 44% {
+        transform:  translateY(0px);
+    }
+    28% {
+        opacity: 0.4;
+        transform:  translateY(-9px);
+    }
     
 }

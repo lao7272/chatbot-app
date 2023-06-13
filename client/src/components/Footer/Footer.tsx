@@ -11,6 +11,11 @@ export default function Footer({handleSetMessage, handleSetResponse, response}: 
         textarea.style.height = "auto";
         const height = textarea.scrollHeight;
         textarea.style.height = `${height}px`;
+        if(textarea.scrollHeight >= 250) {
+            textareaRef.current.classList.add("srollbar-active");
+        } else {
+            textareaRef.current.classList.remove("srollbar-active");
+        }
     }, [message])
     
     function handleChange (e: ChangeEvent<HTMLTextAreaElement>) {
@@ -18,6 +23,7 @@ export default function Footer({handleSetMessage, handleSetResponse, response}: 
         setMessage(text);
     }
     function handleSubmit(e?: FormEvent<HTMLFormElement>) {
+        if(e) e.preventDefault();
         if(message.trim() === "") return;
         const newMessage: Message = {
             role: "user",
@@ -27,14 +33,12 @@ export default function Footer({handleSetMessage, handleSetResponse, response}: 
         handleSetMessage(newMessage);
         handleSetResponse(true);
         setMessage("");
-        if(!e) return;
-        e.preventDefault();
-        e.currentTarget.reset();
+        if(e) e.currentTarget.reset();
     }
     function preventEnter (e: KeyboardEvent<HTMLTextAreaElement>) {
         if(e.key === "Enter" && e.shiftKey) return;
-        if(e.key === "Enter" && !response) {
-            e.preventDefault()
+        if(e.key === "Enter" && !response ) {
+            e.preventDefault();
             e.currentTarget.value = "";
             handleSubmit();
         } else if(e.key === "Enter") {
@@ -46,11 +50,16 @@ export default function Footer({handleSetMessage, handleSetResponse, response}: 
         <div className='chat-footer'>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <textarea ref={textareaRef} onChange={(e) => handleChange(e)} onKeyDown={e => preventEnter(e)} placeholder='Type a message'></textarea>
-                {!response ? 
-                <button type='submit'><p>&#10148;</p></button> : 
-                <div className="chat-typing"></div>
-                }
-                
+                    {!response ? 
+                        <button type='submit'><p>&#10148;</p></button> : 
+                        <div className='loading-container'>
+                            <div className="loading">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    }
             </form>
         </div>
     )
